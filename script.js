@@ -78,3 +78,14 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   `);
 });
+// Function to generate the 'weird shape' percentages
+const applyWeirdShape = () => {
+  const el = document.getElementById('blob');
+  if (!el) return;
+  const r = () => Math.floor(Math.random() * 30) + 35; // Generates random %
+  const s = `${r()}% ${100-r()}% ${r()}% ${100-r()}% / ${r()}% ${r()}% ${100-r()}% ${100-r()}%`;
+  el.style.setProperty('--shape', s);
+};
+
+// Run it when the page loads
+window.addEventListener('DOMContentLoaded', applyWeirdShape);
