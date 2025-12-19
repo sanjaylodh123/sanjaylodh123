@@ -7,109 +7,79 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Hero Banner -->
   <section class="hero">
     <div class="hero-content glass">
-      <!-- Circular avatar inside banner -->
-      <img src="assets/images/avatar.jpg" alt="Sanjay avatar" class="avatar-banner" />
-
+      <div class="avatar-container">
+        <img src="assets/images/avatar.jpg" alt="Sanjay" class="avatar-banner" id="dynamicAvatar" />
+      </div>
       <h1 class="hero-title">Sanjay Kumar Lodh</h1>
       <p class="hero-subtitle">Civil Engineer • Educator • Creator</p>
-      <a href="#about" class="hero-btn">Explore My Work</a>
+      <div class="hero-btns">
+        <a href="#about" class="hero-btn primary">Explore Work</a>
+        <a href="https://www.youtube.com/@sanjayciviluniverse" target="_blank" class="hero-btn secondary">YouTube</a>
+      </div>
     </div>
   </section>
 
-  <!-- Navbar -->
   <header class="navbar glass">
     <div class="logo">Sanjay<span>Universe</span></div>
     <nav>
       <ul>
-        <li><a href="#about" class="nav-link active">About Me</a></li>
+        <li><a href="#about" class="nav-link active">About</a></li>
         <li><a href="#blog" class="nav-link">Blog</a></li>
-        <li><a href="#collection" class="nav-link">My Collection</a></li>
+        <li><a href="#collection" class="nav-link">Collection</a></li>
         <li><a href="#downloads" class="nav-link">Downloads</a></li>
       </ul>
     </nav>
-    <button id="themeToggle">☀︎</button>
+    <button id="themeToggle" title="Toggle Mode">🌓</button>
   </header>
 
-  <main>
-    <!-- Modern About Me -->
-    <section id="about" class="section glass about-modern">
-      <div class="info-wrapper">
-        <h1 class="gradient-text">Sanjay Kumar Lodh</h1>
-        <p class="tagline">Civil Engineer • Educator • Creator</p>
-
-        <div class="info-cards">
-          <div class="card">
-            <h2>📍 Location</h2>
-            <p>Suddhodhan-06, Rupandehi</p>
-          </div>
-          <div class="card">
-            <h2>📞 Contact</h2>
-            <p>9860369578</p>
-            <p><a href="mailto:sanjaylodh7@gmail.com">sanjaylodh7@gmail.com</a></p>
-          </div>
-          <div class="card">
-            <h2>🎓 Education</h2>
-            <ul>
-              <li>SLC – Gurauliya Secondary School</li>
-              <li>10+2 – Trinity International HS, Kathmandu</li>
-              <li>Bachelor – Pulchowk Campus, Lalitpur</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h2>💼 Work Experience</h2>
-            <ul>
-              <li>Sub Engineer – Birgunj (2022–2023)</li>
-              <li>Teacher – Rupandehi (2023–2024)</li>
-              <li>Civil Engineer – Pokhara (2024–2025)</li>
-              <li>Currently – Dadeldhura</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h2>🛠️ Skills</h2>
-            <p>AutoCAD, Civil3D, ETABS, GIS</p>
-            <p>Python, C-Programming</p>
-          </div>
-          <div class="card">
-            <h2>🎶 Interests</h2>
-            <p>Music, Movies, Travelling</p>
-          </div>
-          <div class="card">
-            <h2>📺 YouTube</h2>
-            <p>
-              <a href="https://www.youtube.com/@sanjayciviluniverse" target="_blank">
-                SANJAY'S CIVIL UNIVERSE
-              </a>
-            </p>
-          </div>
+  <main class="container">
+    <section id="about" class="section glass">
+      <h1 class="gradient-text">Professional Profile</h1>
+      <div class="info-cards">
+        <div class="card">
+          <h3>📍 Location</h3>
+          <p>Suddhodhan-06, Rupandehi</p>
+        </div>
+        <div class="card">
+          <h3>📞 Contact</h3>
+          <p>9860369578</p>
+          <p><a href="mailto:sanjaylodh7@gmail.com">sanjaylodh7@gmail.com</a></p>
+        </div>
+        <div class="card">
+          <h3>🎓 Education</h3>
+          <ul>
+            <li>SLC – Gurauliya Secondary</li>
+            <li>10+2 – Trinity International</li>
+            <li>BE – Pulchowk Campus</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🛠️ Skills</h3>
+          <div class="skills-tag">AutoCAD, Civil3D, ETABS, GIS, Python, C</div>
         </div>
       </div>
     </section>
 
-    <!-- Blog -->
     <section id="blog" class="section glass hidden">
-      <h2>Blog</h2>
+      <h2>Latest Articles</h2>
       <div id="postsGrid" class="grid"></div>
     </section>
 
-    <!-- Collection -->
     <section id="collection" class="section glass hidden">
-      <h2>My Collection</h2>
+      <h2>Video Collection</h2>
       <div id="videoGrid" class="grid grid-video"></div>
     </section>
 
-    <!-- Downloads -->
     <section id="downloads" class="section glass hidden">
-      <h2>Downloads</h2>
+      <h2>Resources & Downloads</h2>
       <ul id="downloadList" class="download-list"></ul>
     </section>
   </main>
 
   <footer class="footer glass">
-    <span>© <span id="year"></span> Sanjay Kumar Lodh</span>
-    <span>Made with glassmorphism & gradients</span>
+    <p>© <span id="year"></span> Sanjay Kumar Lodh | Designed for the Future</p>
   </footer>
 
   <script src="script.js"></script>
