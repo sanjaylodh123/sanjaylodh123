@@ -1,109 +1,80 @@
-// Footer year
-const yearEl = document.getElementById('year');
-yearEl.textContent = new Date().getFullYear();
+// Initialize Year
+document.getElementById('year').textContent = new Date().getFullYear();
 
-// Sections & nav links
-const sections = document.querySelectorAll('section');
+// 1. DYNAMIC WEIRD AVATAR LOGIC
+function randomizeAvatar() {
+  const avatar = document.getElementById('dynamicAvatar');
+  if (!avatar) return;
+
+  // Function to get a random percentage between 30 and 70
+  const r = () => Math.floor(Math.random() * 41) + 30;
+
+  // Create a 8-point border radius (weird organic blob)
+  const blobValue = `${r()}% ${r()}% ${r()}% ${r()}% / ${r()}% ${r()}% ${r()}% ${r()}%`;
+  
+  // Set the CSS variable
+  avatar.style.setProperty('--blob', blobValue);
+}
+
+// 2. NAVIGATION LOGIC
 const links = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('.section');
 
-// Navigation toggle
+function showSection(targetId) {
+  sections.forEach(s => s.classList.add('hidden'));
+  links.forEach(l => l.classList.remove('active'));
+
+  const target = document.getElementById(targetId);
+  if (target) {
+    target.classList.remove('hidden');
+    window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+  }
+
+  const activeLink = document.querySelector(`a[href="#${targetId}"]`);
+  if (activeLink) activeLink.classList.add('active');
+}
+
 links.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    const target = link.getAttribute('href').replace('#', '');
-    links.forEach(l => l.classList.remove('active'));
-    link.classList.add('active');
-    sections.forEach(s => s.classList.add('hidden'));
-    document.getElementById(target).classList.remove('hidden');
-    document.getElementById(target).scrollIntoView({ behavior: 'smooth' });
+    const id = link.getAttribute('href').replace('#', '');
+    showSection(id);
   });
 });
 
-// Theme toggle
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', () => {
+// Hero Button Logic
+document.querySelector('.hero-btn.primary').addEventListener('click', e => {
+  e.preventDefault();
+  showSection('about');
+});
+
+// 3. THEME TOGGLE
+document.getElementById('themeToggle').addEventListener('click', () => {
   document.body.classList.toggle('light');
 });
 
-// Smooth scroll from Hero button to About section
-const heroBtn = document.querySelector('.hero-btn');
-if (heroBtn) {
-  heroBtn.addEventListener('click', e => {
-    e.preventDefault();
-    document.getElementById('about').classList.remove('hidden');
-    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-    links.forEach(l => l.classList.remove('active'));
-    document.querySelector('a[href="#about"]').classList.add('active');
-  });
-}
-
-// Blog posts loader
-async function initBlog() {
+// 4. CONTENT LOADERS (Placeholder logic based on your previous file)
+async function loadContent(url, gridId, templateFn) {
   try {
-    const res = await fetch('data/posts.json');
-    const posts = await res.json();
-    const grid = document.getElementById('postsGrid');
-    grid.innerHTML = '';
-    posts.forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <h3>${p.title}</h3>
-        <div class="meta">${p.date} • ${p.read_time} • ${p.tags.join(', ')}</div>
-        <p>${p.summary}</p>
-      `;
-      grid.appendChild(card);
-    });
+    const res = await fetch(url);
+    const data = await res.json();
+    const grid = document.getElementById(gridId);
+    if (!grid) return;
+    grid.innerHTML = data.map(templateFn).join('');
   } catch (err) {
-    console.error('Error loading posts:', err);
+    console.warn(`Could not load ${url}. Ensure the JSON file exists.`);
   }
 }
 
-// Videos loader
-async function initVideos() {
-  try {
-    const res = await fetch('data/videos.json');
-    const videos = await res.json();
-    const grid = document.getElementById('videoGrid');
-    grid.innerHTML = '';
-    videos.forEach(v => {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'card';
-      wrapper.innerHTML = `
-        <h3>${v.title}</h3>
-        <div class="meta">${v.channel}</div>
-        <iframe src="https://www.youtube.com/embed/${v.id}" 
-                title="${v.title}" allowfullscreen></iframe>
-      `;
-      grid.appendChild(wrapper);
-    });
-  } catch (err) {
-    console.error('Error loading videos:', err);
-  }
-}
-
-// Downloads loader
-async function initDownloads() {
-  try {
-    const res = await fetch('data/downloads.json');
-    const downloads = await res.json();
-    const list = document.getElementById('downloadList');
-    list.innerHTML = '';
-    downloads.forEach(d => {
-      const item = document.createElement('li');
-      item.className = 'download-item';
-      item.innerHTML = `
-        <span>${d.name} (${d.type})</span>
-        <a href="${d.url}" download>⬇ Download</a>
-      `;
-      list.appendChild(item);
-    });
-  } catch (err) {
-    console.error('Error loading downloads:', err);
-  }
-}
-
-// Initialize content
-initBlog();
-initVideos();
-initDownloads();
+// Initialize
+window.addEventListener('DOMContentLoaded', () => {
+  randomizeAvatar(); // Change shape on load
+  
+  // Example loaders - you'll need the JSON files in your 'data/' folder
+  loadContent('data/posts.json', 'postsGrid', p => `
+    <div class="card">
+      <h3>${p.title}</h3>
+      <p>${p.summary}</p>
+    </div>
+  `);
+});
