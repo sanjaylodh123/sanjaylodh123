@@ -1,160 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanjay Kumar Lodh | Civil Universe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-heavy: rgba(255, 255, 255, 0.18);
-            --border: rgba(255, 255, 255, 0.2);
-            --accent: #00d2ff;
-            --secondary: #9d50bb;
-            --text: #ffffff;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        body { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: var(--text); min-height: 100vh; overflow-x: hidden; }
-
-        /* ANIMATED BACKGROUND */
-        .orb { position: fixed; width: 500px; height: 500px; border-radius: 50%; filter: blur(100px); z-index: -1; opacity: 0.4; }
-        .orb-1 { background: var(--secondary); top: -10%; left: -10%; animation: float 20s infinite alternate; }
-        .orb-2 { background: var(--accent); bottom: -10%; right: -10%; animation: float 20s infinite alternate-reverse; }
-        @keyframes float { from { transform: translate(0, 0); } to { transform: translate(100px, 100px); } }
-
-        /* NAVIGATION */
-        header { position: fixed; top: 0; width: 100%; padding: 20px 0; z-index: 1000; }
-        nav { margin: 0 auto; width: 90%; max-width: 1100px; background: var(--glass); backdrop-filter: blur(15px); border: 1px solid var(--border); border-radius: 50px; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
-        .logo { font-weight: 600; font-size: 1.2rem; color: var(--accent); text-decoration: none; letter-spacing: 1px; }
-        .nav-links { list-style: none; display: flex; gap: 20px; }
-        .nav-links a { text-decoration: none; color: #fff; font-size: 0.85rem; opacity: 0.7; transition: 0.3s; }
-        .nav-links a:hover { opacity: 1; color: var(--accent); }
-
-        /* SECTIONS LOGIC */
-        .container { max-width: 1100px; margin: 0 auto; padding: 120px 20px 60px 20px; }
-        section { display: none; animation: fadeIn 0.8s ease forwards; }
-        section:target { display: block; }
-        #about { display: block; } /* Default section */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .glass-card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 30px; padding: 40px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); margin-bottom: 30px; }
-
-        /* ABOUT SECTION PHOTO */
-        .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: center; }
-        .photo-weird { width: 100%; height: 450px; background: linear-gradient(45deg, var(--accent), var(--secondary)); clip-path: polygon(30% 0%, 100% 0%, 70% 100%, 0% 100%); border-radius: 30% 70% 70% 30%; overflow: hidden; border: 5px solid var(--border); }
-        .photo-weird img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* COLLECTION GALLERY */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .gallery-item { border-radius: 15px; overflow: hidden; border: 1px solid var(--border); height: 200px; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .gallery-item img:hover { transform: scale(1.1); }
-
-        /* FORM STYLING */
-        input, textarea { width: 100%; padding: 12px; background: var(--glass); border: 1px solid var(--border); border-radius: 10px; color: white; margin-top: 10px; }
-        button { background: var(--accent); border: none; padding: 12px 30px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-top: 15px; }
-
-        /* BLOG & DOWNLOAD STYLES */
-        .blog-item { background: var(--glass-heavy); padding: 25px; border-radius: 20px; margin-bottom: 20px; border: 1px solid var(--border); }
-        .dl-row { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--glass-heavy); border-radius: 15px; margin-bottom: 10px; }
-        
-        @media (max-width: 850px) { .about-grid { grid-template-columns: 1fr; } }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sanjay | Futuristic Blog</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Sanjay's futuristic blog with glassmorphism design, YouTube collection, and downloads." />
 </head>
 <body>
+  <canvas id="orbital-bg"></canvas>
 
-    <div class="orb orb-1"></div><div class="orb orb-2"></div>
+  <header class="navbar glass">
+    <div class="logo">Sanjay<span>_X</span></div>
+    <nav>
+      <ul>
+        <li><a href="#about" class="nav-link active">About me</a></li>
+        <li><a href="#blog" class="nav-link">Blog</a></li>
+        <li><a href="#collection" class="nav-link">My collection</a></li>
+        <li><a href="#downloads" class="nav-link">Downloads</a></li>
+      </ul>
+    </nav>
+    <button id="themeToggle" aria-label="Toggle theme">⌁</button>
+  </header>
 
-    <header>
-        <nav>
-            <a href="#about" class="logo">SANJAY.L</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#collection">Collection</a></li>
-                <li><a href="#blogs">Vlogs</a></li>
-                <li><a href="#downloads">Downloads</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <main>
+    <!-- About Section -->
+    <section id="about" class="section glass">
+      <div class="about-wrapper">
+        <img src="assets/avatar.jpg" alt="Sanjay avatar" class="avatar" />
+        <div>
+          <h1>Hey, I’m Sanjay</h1>
+          <p>
+            I teach practical tech for students and beginners—Excel, Word, AutoCAD, Python OOP, and full-stack web.
+            I build classroom-ready tools and real-world tutorials. This site houses my writing, videos, and downloads.
+          </p>
+          <div class="badges">
+            <span>Excel</span><span>AutoCAD</span><span>Python OOP</span><span>Web Dev</span><span>Education</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="container">
-        <section id="about">
-            <div class="glass-card about-grid">
-                <div class="photo-weird">
-                    <img src="profile.jpg" alt="Sanjay Kumar Lodh" onerror="this.src='https://via.placeholder.com/500'">
-                </div>
-                <div class="info">
-                    <h1>Sanjay Kumar Lodh</h1>
-                    <p style="color:var(--accent)">Civil Engineer (Gazetted Third Class)</p>
-                    <br>
-                    <p>📍 Suddhodhan-06, Rupandehi | 📞 9860369578</p>
-                    <p>📧 sanjaylodh7@gmail.com</p>
-                    <hr style="margin:20px 0; opacity:0.1">
-                    <h4>Software Skills</h4>
-                    <p>AutoCAD, Civil3D, ETABS, GIS, Python, C-Programming</p>
-                </div>
-            </div>
-        </section>
+    <!-- Blog Section -->
+    <section id="blog" class="section glass hidden">
+      <div class="section-header">
+        <h2>Blog</h2>
+        <div class="filters">
+          <input type="search" id="searchInput" placeholder="Search posts..." />
+          <select id="tagFilter">
+            <option value="">All tags</option>
+          </select>
+        </div>
+      </div>
+      <div id="postsGrid" class="grid"></div>
+      <div id="postModal" class="modal hidden">
+        <div class="modal-content glass">
+          <button class="close">✕</button>
+          <article id="modalArticle"></article>
+        </div>
+      </div>
+    </section>
 
-        <section id="collection">
-            <div class="glass-card">
-                <h2>My Collection</h2>
-                <p>Engineering Projects & YouTube Content</p>
-                <div class="gallery">
-                    <div class="gallery-item"><img src="project1.jpg" alt="Project" onerror="this.src='https://via.placeholder.com/300'"></div>
-                    <div class="gallery-item"><img src="project2.jpg" alt="Project" onerror="this.src='https://via.placeholder.com/300'"></div>
-                </div>
-                <div style="margin-top:30px; text-align:center;">
-                    <a href="https://www.youtube.com/@SanjaysCivilUniverse" target="_blank" style="color:red; text-decoration:none; font-weight:bold;">
-                        <i class="fab fa-youtube"></i> WATCH SANJAY'S CIVIL UNIVERSE
-                    </a>
-                </div>
-            </div>
-        </section>
+    <!-- Collection Section -->
+    <section id="collection" class="section glass hidden">
+      <div class="section-header">
+        <h2>My collection</h2>
+        <p>Handpicked videos from my YouTube channel.</p>
+      </div>
+      <div id="videoGrid" class="grid grid-video"></div>
+    </section>
 
-        <section id="blogs">
-            <h2>Daily Vlogs</h2>
-            <div id="vlog-list">
-                <div class="blog-item">
-                    <small>October 24, 2025</small>
-                    <h3>My Journey to Dadeldhura</h3>
-                    <p>Today marks the start of my new role at the District Coordination Committee...</p>
-                </div>
-                <div class="blog-item">
-                    <small>October 20, 2025</small>
-                    <h3>Bridge Design Basics</h3>
-                    <p>Using AutoCAD and Civil3D to map out the terrain for the upcoming project...</p>
-                </div>
-            </div>
-        </section>
+    <!-- Downloads Section -->
+    <section id="downloads" class="section glass hidden">
+      <div class="section-header">
+        <h2>Downloads</h2>
+        <p>Feel free to use these files in your classroom or projects.</p>
+      </div>
+      <ul id="downloadList" class="download-list"></ul>
+    </section>
+  </main>
 
-        <section id="downloads">
-            <div class="glass-card">
-                <h2>Downloads</h2>
-                <div class="dl-row">
-                    <span>Sanjay_Lodh_CV.pdf</span>
-                    <a href="CV.pdf" download style="color:var(--accent)">Download</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="glass-card">
-                <h2>Get in Touch</h2>
-                <form>
-                    <input type="text" placeholder="Your Name">
-                    <input type="email" placeholder="Your Email">
-                    <textarea rows="5" placeholder="Your Message"></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </section>
+  <footer class="footer glass">
+    <div>
+      <span>© <span id="year"></span> Sanjay</span>
+      <span>Made with clarity and glass</span>
     </div>
+    <div class="socials">
+      <a href="https://www.youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:you@example.com">Email</a>
+    </div>
+  </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
