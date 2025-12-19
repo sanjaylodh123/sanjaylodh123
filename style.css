@@ -67,6 +67,30 @@ body {
   box-shadow: 0 10px 25px rgba(123,140,255,0.6);
 }
 
+/* Circular avatar in hero banner */
+.avatar-banner {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%; /* circular */
+  border: 3px solid transparent;
+  background: linear-gradient(135deg, #7b8cff, #00c6ff, #ff6ec4) border-box;
+  background-size: 300% 300%;
+  animation: pulseGradient 8s ease infinite;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  margin-bottom: 20px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.avatar-banner:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 28px rgba(123,140,255,0.6);
+}
+@keyframes pulseGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* Navbar */
 .navbar {
   display: flex;
@@ -79,89 +103,4 @@ body {
   list-style: none;
   display: flex;
   gap: 15px;
-}
-.navbar a {
-  text-decoration: none;
-  color: var(--text);
-  padding: 8px 12px;
-  border-radius: 12px;
-}
-.navbar a:hover, .navbar a.active {
-  background: rgba(123,140,255,0.15);
-}
-
-/* About Me Modern */
-.about-modern { padding: 40px; }
-.about-grid {
-  display: grid;
-  grid-template-columns: 200px 1fr; /* smaller column for avatar */
-  gap: 40px;
-  align-items: start;
-}
-.gradient-text {
-  background: linear-gradient(90deg, #7b8cff, #00c6ff, #ff6ec4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-  animation: gradientMove 6s linear infinite;
-}
-@keyframes gradientMove {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
-}
-.tagline { font-size: 1.1rem; color: #9fb0c5; margin-bottom: 20px; }
-.info-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-/* Stylish Avatar with Gradient Frame */
-.avatar-weird {
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-
-  /* Polygon shape */
-  clip-path: polygon(50% 0%, 95% 25%, 75% 100%, 25% 100%, 5% 25%);
-
-  border: 3px solid transparent;
-  background: linear-gradient(135deg, #7b8cff, #00c6ff, #ff6ec4) border-box;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
-
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.avatar-weird:hover {
-  transform: rotate(3deg) scale(1.08);
-  box-shadow: 0 12px 28px rgba(123,140,255,0.6);
-}
-/* Stylish Avatar with Gradient Frame + Pulse */
-.avatar-weird {
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-
-  /* Polygon shape */
-  clip-path: polygon(50% 0%, 95% 25%, 75% 100%, 25% 100%, 5% 25%);
-
-  border: 3px solid transparent;
-  background: linear-gradient(135deg, #7b8cff, #00c6ff, #ff6ec4) border-box;
-  background-size: 300% 300%;
-  animation: pulseGradient 8s ease infinite;
-
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.avatar-weird:hover {
-  transform: rotate(3deg) scale(1.08);
-  box-shadow: 0 12px 28px rgba(123,140,255,0.6);
-}
-
-/* Gradient pulse animation */
-@keyframes pulseGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
