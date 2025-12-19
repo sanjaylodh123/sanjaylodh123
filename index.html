@@ -3,170 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanjay Kumar Lodh | Portfolio</title>
+    <title>Sanjay Kumar Lodh | Civil Engineer</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --glass: rgba(255, 255, 255, 0.1);
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-heavy: rgba(255, 255, 255, 0.15);
             --border: rgba(255, 255, 255, 0.2);
             --accent: #00d2ff;
+            --secondary: #9d50bb;
             --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
 
         body {
             background: var(--bg-gradient);
             color: #fff;
             min-height: 100vh;
-            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Background Animated Orbs */
-        .orb {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.5;
-            animation: move 20s infinite alternate;
-        }
-        .orb-1 { background: #3a1c71; top: -10%; left: -10%; }
-        .orb-2 { background: #d76d77; bottom: -10%; right: -10%; animation-delay: -5s; }
+        /* Animated Background Orbs */
+        .orb { position: fixed; width: 500px; height: 500px; border-radius: 50%; filter: blur(100px); z-index: -1; opacity: 0.4; }
+        .orb-1 { background: var(--secondary); top: -10%; left: -10%; animation: float 15s infinite alternate; }
+        .orb-2 { background: var(--accent); bottom: -10%; right: -10%; animation: float 15s infinite alternate-reverse; }
 
-        @keyframes move {
-            from { transform: translate(0, 0); }
-            to { transform: translate(100px, 100px); }
-        }
+        @keyframes float { from { transform: translate(0, 0); } to { transform: translate(100px, 50px); } }
 
-        /* Glass Navbar */
+        /* Navbar */
+        header { position: sticky; top: 0; z-index: 1000; padding: 20px 0; }
         nav {
-            position: sticky;
-            top: 20px;
             margin: 0 auto;
             width: 90%;
             max-width: 1000px;
             background: var(--glass);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--border);
             border-radius: 50px;
-            padding: 15px 30px;
+            padding: 12px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
+        .logo { font-weight: 600; font-size: 1.3rem; color: var(--accent); text-decoration: none; }
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links a { text-decoration: none; color: #fff; font-size: 0.85rem; font-weight: 400; opacity: 0.8; transition: 0.3s; }
+        .nav-links a:hover { opacity: 1; color: var(--accent); }
 
-        .logo { font-weight: 600; font-size: 1.2rem; letter-spacing: 1px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
-        .nav-links { list-style: none; display: flex; gap: 25px; }
-        .nav-links a { 
-            text-decoration: none; 
-            color: #ddd; 
-            font-size: 0.9rem; 
-            transition: 0.3s;
-        }
-        .nav-links a:hover { color: var(--accent); }
-
-        /* Main Container */
-        .container {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-
-        /* Glass Card - About Me Section */
-        .about-card {
+        /* General Section Styling */
+        section { margin-bottom: 100px; padding-top: 60px; }
+        .glass-card {
             background: var(--glass);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(15px);
             border: 1px solid var(--border);
             border-radius: 30px;
-            padding: 50px;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 40px;
-            align-items: center;
+            padding: 40px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.2);
         }
 
-        /* Weird Photo Shape */
-        .photo-container {
+        /* --- ABOUT ME SECTION --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: center; }
+        .photo-weird {
             width: 100%;
-            height: 400px;
-            background: linear-gradient(45deg, var(--accent), #9d50bb);
-            /* This creates the "weird" organic blob shape */
-            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 450px;
+            background: linear-gradient(45deg, var(--accent), var(--secondary));
+            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); /* Geometric weird shape */
+            border-radius: 40px;
             overflow: hidden;
-            transition: 0.5s ease;
         }
-
-        .photo-container:hover {
-            border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
-            transform: scale(1.02);
-        }
-
-        .photo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-        }
-
-        /* Content Styles */
-        .info h1 { font-size: 2.5rem; margin-bottom: 5px; color: #fff; }
-        .profession { color: var(--accent); font-weight: 600; margin-bottom: 20px; display: block; }
-        
-        .grid-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-        }
-
-        .section-title {
-            font-size: 1.2rem;
-            border-left: 4px solid var(--accent);
-            padding-left: 10px;
-            margin: 30px 0 15px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .experience-item, .education-item {
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .date { font-size: 0.8rem; color: #aaa; }
-
-        .skills-tag {
+        .photo-weird img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: luminosity; }
+        .info h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .tagline { color: var(--accent); font-weight: 600; display: block; margin-bottom: 20px; }
+        .skill-tags .tag {
             display: inline-block;
-            background: rgba(255,255,255,0.1);
+            background: var(--glass-heavy);
             padding: 5px 15px;
-            border-radius: 20px;
-            margin: 5px;
-            font-size: 0.85rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0 5px 10px 0;
             border: 1px solid var(--border);
         }
 
+        /* --- COLLECTION (YOUTUBE) SECTION --- */
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { font-size: 2rem; margin-bottom: 10px; }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        
+        .youtube-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #ff0000;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .youtube-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255,0,0,0.4); }
+
+        /* --- BLOG SECTION --- */
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .blog-post {
+            background: var(--glass-heavy);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+        .blog-post:hover { transform: translateY(-5px); background: rgba(255,255,255,0.2); }
+        .blog-date { font-size: 0.8rem; color: var(--accent); }
+        .blog-post h3 { margin: 10px 0; font-size: 1.1rem; }
+
+        /* --- DOWNLOAD SECTION --- */
+        .download-list { display: flex; flex-direction: column; gap: 15px; }
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: var(--glass-heavy);
+            border-radius: 15px;
+            border: 1px solid var(--border);
+        }
+        .file-info { display: flex; align-items: center; gap: 15px; }
+        .file-info i { font-size: 1.5rem; color: var(--accent); }
+        .dl-btn {
+            color: #fff;
+            text-decoration: none;
+            background: var(--glass);
+            padding: 8px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .dl-btn:hover { background: #fff; color: #000; }
+
         @media (max-width: 850px) {
-            .about-card { grid-template-columns: 1fr; padding: 20px; }
-            .photo-container { height: 300px; }
-            .grid-info { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; }
+            .photo-weird { height: 300px; }
+            nav { width: 95%; padding: 10px 20px; }
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -175,67 +170,119 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
-    <nav>
-        <div class="logo">SKL.</div>
-        <ul class="nav-links">
-            <li><a href="#">About Me</a></li>
-            <li><a href="#">My Collection</a></li>
-            <li><a href="#">Blogs</a></li>
-        </ul>
-    </nav>
+    <header>
+        <nav>
+            <a href="#" class="logo">SANJAY.L</a>
+            <ul class="nav-links">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#collection">My Collection</a></li>
+                <li><a href="#blogs">Daily Vlogs</a></li>
+                <li><a href="#downloads">Downloads</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="container">
-        <section class="about-card">
-            <div class="photo-container">
-                <img src="https://via.placeholder.com/400x400" alt="Sanjay Kumar Lodh">
-            </div>
-
-            <div class="info">
-                <h1>Sanjay Kumar Lodh</h1>
-                <span class="profession">Civil Engineer (Gazetted Third Class)</span>
-                
-                <div class="grid-info">
-                    <div><strong>📍 Address:</strong> Suddhodhan-06, Rupandehi</div>
-                    <div><strong>📞 Contact:</strong> 9860369578</div>
-                    <div><strong>📧 Email:</strong> sanjaylodh7@gmail.com</div>
+        
+        <section id="about" class="glass-card">
+            <div class="about-grid">
+                <div class="photo-weird">
+                    <img src="https://via.placeholder.com/500" alt="Sanjay Kumar Lodh">
                 </div>
-
-                <h3 class="section-title">Experience</h3>
-                <div class="experience-item">
-                    <p><strong>District Coordination Committee Office</strong> | Dadeldhura</p>
-                    <span class="date">Current Position</span>
+                <div class="info">
+                    <h1>Sanjay Kumar Lodh</h1>
+                    <span class="tagline">Civil Engineer & Tech Enthusiast</span>
+                    <p style="margin-bottom: 20px; opacity: 0.9;">
+                        Currently serving as <strong>Civil Engineer (Gazetted Third Class)</strong> at District Coordination Committee Office, Dadeldhura. I specialize in structural analysis, water supply projects, and urban planning.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="tag">AutoCAD</span> <span class="tag">Civil3D</span> 
+                        <span class="tag">ETABS</span> <span class="tag">GIS</span> 
+                        <span class="tag">Python</span> <span class="tag">C-Programming</span>
+                    </div>
+                    <div style="margin-top: 20px; font-size: 0.9rem;">
+                        <p>📍 Suddhodhan-06, Rupandehi</p>
+                        <p>📧 sanjaylodh7@gmail.com</p>
+                    </div>
                 </div>
-                <div class="experience-item">
-                    <p><strong>Civil Engineer (7th Level)</strong> | Pokhara Metropolitan City</p>
-                    <span class="date">2024 - 2025</span>
-                </div>
-                <div class="experience-item">
-                    <p><strong>Secondary Level Teacher</strong> | Pharsatikar Secondary School</p>
-                    <span class="date">2023 - 2024</span>
-                </div>
-                <div class="experience-item">
-                    <p><strong>Sub Engineer</strong> | Fed. Water Supply & Sanitation, Birgunj</p>
-                    <span class="date">2022 - 2023</span>
-                </div>
-
-                <h3 class="section-title">Education</h3>
-                <p><strong>Bachelor in Civil Engineering</strong><br>Pulchowk Campus, Lalitpur</p>
-                
-                <h3 class="section-title">Technical Skills</h3>
-                <div class="skills-wrap">
-                    <span class="skills-tag">AutoCAD</span>
-                    <span class="skills-tag">Civil3D</span>
-                    <span class="skills-tag">ETABS</span>
-                    <span class="skills-tag">GIS</span>
-                    <span class="skills-tag">Python</span>
-                    <span class="skills-tag">C-Programming</span>
-                </div>
-
-                <h3 class="section-title">Interests</h3>
-                <p style="font-size: 0.9rem; color: #ccc;">Listening Music, Watching Movies, and Travelling</p>
             </div>
         </section>
+
+        <section id="collection">
+            <div class="section-header">
+                <h2>My Collection</h2>
+                <p>Check out my latest videos and engineering insights</p>
+            </div>
+            <div class="glass-card" style="text-align: center;">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <a href="https://youtube.com/@YOUR_CHANNEL_ID" target="_blank" class="youtube-btn">
+                    <i class="fab fa-youtube"></i> Visit My YouTube Channel
+                </a>
+            </div>
+        </section>
+
+        <section id="blogs">
+            <div class="section-header">
+                <h2>Daily Vlogs</h2>
+                <p>Stories from my life as an engineer and traveler</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-post">
+                    <span class="blog-date">Oct 24, 2025</span>
+                    <h3>A Day in Dadeldhura</h3>
+                    <p>Exploring the construction sites and the scenic beauty of Far-west Nepal...</p>
+                </div>
+                <div class="blog-post">
+                    <span class="blog-date">Oct 20, 2025</span>
+                    <h3>Python for Civil Engineers</h3>
+                    <p>How I use coding to automate structural calculations and data entry...</p>
+                </div>
+                <div class="blog-post">
+                    <span class="blog-date">Oct 15, 2025</span>
+                    <h3>Bridge Inspection Day</h3>
+                    <p>Routine checkup of the new suspension bridge project. Safety first!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="downloads">
+            <div class="section-header">
+                <h2>Resources & Downloads</h2>
+                <p>Download my CV, project reports, or useful engineering tools</p>
+            </div>
+            <div class="glass-card">
+                <div class="download-list">
+                    <div class="download-item">
+                        <div class="file-info">
+                            <i class="fas fa-file-pdf"></i>
+                            <div>
+                                <strong>My Curriculum Vitae (CV)</strong><br>
+                                <small>PDF | 1.2 MB</small>
+                            </div>
+                        </div>
+                        <a href="#" class="dl-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                    <div class="download-item">
+                        <div class="file-info">
+                            <i class="fas fa-file-code"></i>
+                            <div>
+                                <strong>Python Automation Scripts</strong><br>
+                                <small>ZIP | 450 KB</small>
+                            </div>
+                        </div>
+                        <a href="#" class="dl-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
+
+    <footer style="text-align: center; padding: 40px; opacity: 0.6; font-size: 0.8rem;">
+        &copy; 2025 Sanjay Kumar Lodh. Built with Glassmorphism.
+    </footer>
 
 </body>
 </html>
