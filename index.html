@@ -6,12 +6,9 @@
     <title>Sanjay Kumar Lodh | Civil Universe</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -22,15 +19,13 @@
                         outfit: ['Outfit', 'sans-serif'],
                     },
                     colors: {
+                        // [CUSTOMIZE]: Change your theme colors here
                         cyber: {
-                            cyan: '#00f2ff',
-                            purple: '#bc13fe',
-                            dark: '#050a14',
+                            cyan: '#00f2ff',      /* Primary Accent */
+                            purple: '#bc13fe',    /* Secondary Accent */
+                            dark: '#020617',      /* Deep Background */
                             glass: 'rgba(255, 255, 255, 0.03)'
                         }
-                    },
-                    backgroundImage: {
-                        'neon-gradient': 'linear-gradient(to right, #00f2ff, #bc13fe)',
                     }
                 }
             }
@@ -38,580 +33,287 @@
     </script>
 
     <style>
+        /* [GLOBAL STYLES] */
         body {
-            background-color: #02040a;
+            background-color: #020617;
             color: #e2e8f0;
             overflow-x: hidden;
+            font-family: 'Outfit', sans-serif;
         }
 
-        /* Animated Background Mesh */
+        /* [ANIMATED BACKGROUND MESH] */
         .bg-mesh {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            inset: 0;
             z-index: -1;
             background: 
-                radial-gradient(circle at 15% 50%, rgba(188, 19, 254, 0.08), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(0, 242, 255, 0.08), transparent 25%);
-            animation: pulseBackground 10s infinite alternate;
+                radial-gradient(circle at 20% 30%, rgba(0, 242, 255, 0.07), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(188, 19, 254, 0.07), transparent 40%);
         }
 
-        @keyframes pulseBackground {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
-        /* Glassmorphism Classes */
-        .glass-card {
+        /* [GLASSMORPHISM EFFECT] */
+        .glass-panel {
             background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
-        .glass-card:hover {
-            border-color: rgba(0, 242, 255, 0.3);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
-            transform: translateY(-5px);
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #02040a; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00f2ff; 
-        }
-
-        /* Timeline Line */
-        .timeline-line::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 20px;
-            width: 2px;
-            background: linear-gradient(to bottom, #00f2ff, #bc13fe, transparent);
-            z-index: 0;
-        }
-        @media (min-width: 768px) {
-            .timeline-line::before { left: 50%; transform: translateX(-50%); }
-        }
-
-        /* Neon Text Glow */
-        .text-glow {
+        /* [NEON GLOW TEXT] */
+        .neon-text {
             text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
         }
+
+        /* [CUSTOM SCROLLBAR] */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f2ff; }
+
+        .timeline-trace {
+            position: absolute; left: 20px; top: 0; bottom: 0; width: 2px;
+            background: linear-gradient(to bottom, #00f2ff, #bc13fe, transparent);
+        }
+        @media (min-width: 768px) { .timeline-trace { left: 50%; transform: translateX(-50%); } }
     </style>
 </head>
-<body class="font-outfit antialiased">
+<body>
 
     <div class="bg-mesh"></div>
 
-    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="glass-card rounded-full px-6 py-3 flex justify-between items-center">
-                <a href="#" class="font-orbitron text-2xl font-bold bg-clip-text text-transparent bg-neon-gradient tracking-widest">
-                    SKL<span class="text-white text-sm opacity-50 font-normal ml-2 hidden sm:inline">| CIVIL UNIVERSE</span>
-                </a>
-                
-                <div class="hidden md:flex space-x-8 text-sm font-orbitron tracking-widest text-slate-400">
-                    <a href="#about" class="hover:text-cyber-cyan transition-colors">Identity</a>
-                    <a href="#experience" class="hover:text-cyber-cyan transition-colors">Career</a>
-                    <a href="#skills" class="hover:text-cyber-cyan transition-colors">Skills</a>
-                    <a href="#blog" class="hover:text-cyber-cyan transition-colors">Logs</a>
-                    <a href="#contact" class="hover:text-cyber-cyan transition-colors">Connect</a>
-                </div>
-
-                <button class="md:hidden text-cyber-cyan text-xl" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
+    <nav class="fixed top-0 w-full z-50 p-6">
+        <div class="max-w-6xl mx-auto glass-panel rounded-2xl px-8 py-4 flex justify-between items-center">
+            <div class="font-orbitron font-black text-2xl tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple">
+                SKL
             </div>
-        </div>
-        
-        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full px-6">
-            <div class="glass-card rounded-2xl p-6 flex flex-col space-y-4 text-center font-orbitron text-sm">
-                <a href="#about" class="text-slate-300 hover:text-cyber-cyan">Identity</a>
-                <a href="#experience" class="text-slate-300 hover:text-cyber-cyan">Career</a>
-                <a href="#skills" class="text-slate-300 hover:text-cyber-cyan">Skills</a>
-                <a href="#videos" class="text-slate-300 hover:text-cyber-cyan">The Lab</a>
-                <a href="#contact" class="text-slate-300 hover:text-cyber-cyan">Connect</a>
+            <div class="hidden md:flex space-x-8 font-orbitron text-[10px] tracking-widest uppercase">
+                <a href="#about" class="hover:text-cyber-cyan transition">Identity</a>
+                <a href="#career" class="hover:text-cyber-cyan transition">Career</a>
+                <a href="#lab" class="hover:text-cyber-cyan transition">Lab</a>
+                <a href="#contact" class="hover:text-cyber-cyan transition">Connect</a>
             </div>
+            <a href="mailto:sanjaylodh7@gmail.com" class="hidden sm:block font-orbitron text-[10px] border border-cyber-cyan/50 px-4 py-2 rounded-lg hover:bg-cyber-cyan hover:text-black transition">DIRECT MAIL</a>
         </div>
     </nav>
 
-    <section class="min-h-screen flex items-center justify-center relative px-6 pt-20">
-        <div class="text-center z-10 max-w-4xl mx-auto">
-            <div class="relative w-48 h-48 mx-auto mb-8" data-aos="zoom-in">
-                <div class="absolute inset-0 rounded-full border-2 border-cyber-cyan animate-spin-slow" style="border-style: dashed; animation-duration: 10s;"></div>
-                <div class="absolute inset-2 rounded-full border-2 border-cyber-purple animate-spin-slow" style="border-style: dotted; animation-direction: reverse; animation-duration: 15s;"></div>
-                <div class="absolute inset-4 rounded-full overflow-hidden bg-gray-800 shadow-[0_0_50px_rgba(0,242,255,0.3)]">
-                    <img src="profile.jpg" alt="Sanjay Kumar Lodh" class="w-full h-full object-cover">
-                </div>
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+        <div data-aos="zoom-out" class="relative mb-10">
+            <div class="absolute inset-0 bg-cyber-cyan rounded-full blur-[80px] opacity-20"></div>
+            <div class="w-48 h-48 p-1 rounded-full bg-gradient-to-tr from-cyber-cyan to-cyber-purple">
+                <img src="profile.jpg" alt="Sanjay Kumar Lodh">
             </div>
+        </div>
+        
+        <h1 data-aos="fade-up" class="font-orbitron text-5xl md:text-8xl font-black tracking-tighter mb-4 uppercase">
+            Sanjay <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-purple neon-text">Lodh</span>
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="100" class="font-orbitron text-xs md:text-sm tracking-[0.6em] text-cyber-cyan uppercase opacity-80 mb-12">
+            Civil Engineer // Innovator // Visionary
+        </p>
 
-            <h1 class="font-orbitron text-5xl md:text-7xl font-black tracking-tighter mb-4" data-aos="fade-up" data-aos-delay="100">
-                SANJAY <span class="text-transparent bg-clip-text bg-neon-gradient text-glow">LODH</span>
-            </h1>
-            
-            <p class="font-orbitron text-cyber-cyan tracking-[0.3em] text-sm md:text-lg mb-8 uppercase" data-aos="fade-up" data-aos-delay="200">
-                Civil Engineer <span class="text-slate-600 px-2">|</span> Innovator <span class="text-slate-600 px-2">|</span> Visionary
-            </p>
-
-            <p class="text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="300">
-                Bridging the gap between structural integrity and digital innovation. 
-                Designing the future of municipal infrastructure with code and concrete.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="400">
-                <a href="#videos" class="group relative px-8 py-3 rounded-lg overflow-hidden glass-card text-white font-orbitron text-xs tracking-widest font-bold uppercase transition-all hover:bg-cyber-cyan hover:text-black hover:shadow-[0_0_30px_rgba(0,242,255,0.6)]">
-                    <span class="relative z-10">Watch The Lab</span>
-                </a>
-                <a href="#contact" class="group relative px-8 py-3 rounded-lg overflow-hidden border border-cyber-purple text-cyber-purple font-orbitron text-xs tracking-widest font-bold uppercase transition-all hover:bg-cyber-purple hover:text-white hover:shadow-[0_0_30px_rgba(188,19,254,0.6)]">
-                    <span class="relative z-10">Initialize Contact</span>
-                </a>
-            </div>
+        <div class="flex gap-6" data-aos="fade-up" data-aos-delay="200">
+            <a href="#lab" class="bg-white text-black px-8 py-4 rounded-xl font-bold font-orbitron text-[10px] tracking-widest hover:scale-105 transition">WATCH THE LAB</a>
+            <a href="#contact" class="glass-panel px-8 py-4 rounded-xl font-bold font-orbitron text-[10px] tracking-widest hover:border-cyber-cyan transition">MESSAGE ME</a>
         </div>
     </section>
 
-    <section id="about" class="py-24 px-6 relative">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="h-px w-10 bg-cyber-cyan"></span>
-                        <h2 class="font-orbitron text-2xl text-cyber-cyan">IDENTITY DATA</h2>
-                    </div>
-                    <h3 class="text-4xl font-bold mb-6 text-white">Engineering Resilient <br><span class="text-slate-500">Communities</span></h3>
-                    <p class="text-slate-400 mb-6 leading-relaxed">
-                        I am a dedicated Civil Engineer based in Nepal, specializing in municipal planning and structural analysis. My passion lies in integrating modern technology (GIS, Python) with traditional engineering principles to solve complex urban challenges.
-                    </p>
-                    <div class="glass-card p-6 rounded-2xl border-l-4 border-cyber-cyan">
-                        <ul class="space-y-4 font-orbitron text-sm">
-                            <li class="flex items-center gap-4 text-slate-300">
-                                <i class="fas fa-map-marker-alt text-cyber-cyan w-6"></i>
-                                Suddhodhan-06, Rupandehi
-                            </li>
-                            <li class="flex items-center gap-4 text-slate-300">
-                                <i class="fas fa-phone text-cyber-cyan w-6"></i>
-                                +977 9860369578
-                            </li>
-                            <li class="flex items-center gap-4 text-slate-300">
-                                <i class="fas fa-envelope text-cyber-cyan w-6"></i>
-                                sanjaylodh7@gmail.com
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <section id="about" class="py-32 max-w-6xl mx-auto px-6">
+        <div class="grid lg:grid-cols-3 gap-10">
+            <div class="lg:col-span-2" data-aos="fade-right">
+                <h2 class="font-orbitron text-4xl mb-8">Structural <span class="text-cyber-cyan italic">Integrity</span></h2>
+                <p class="text-slate-400 text-lg leading-relaxed max-w-2xl mb-8">
+                    Based in Rupandehi, Nepal, I specialize in municipal infrastructure and high-level structural systems. 
+                    I bridge the gap between traditional civil engineering and modern computational technology.
+                </p>
                 
-                <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
-                    <div class="glass-card p-6 rounded-2xl text-center hover:bg-white/5 transition">
-                        <i class="fas fa-laptop-code text-4xl text-cyber-purple mb-4"></i>
-                        <h4 class="font-orbitron text-sm">Computational<br>Design</h4>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl text-center hover:bg-white/5 transition mt-8">
-                        <i class="fas fa-city text-4xl text-cyber-cyan mb-4"></i>
-                        <h4 class="font-orbitron text-sm">Urban<br>Planning</h4>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl text-center hover:bg-white/5 transition">
-                        <i class="fas fa-layer-group text-4xl text-cyber-cyan mb-4"></i>
-                        <h4 class="font-orbitron text-sm">Structural<br>Analysis</h4>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl text-center hover:bg-white/5 transition mt-8">
-                        <i class="fas fa-project-diagram text-4xl text-cyber-purple mb-4"></i>
-                        <h4 class="font-orbitron text-sm">Project<br>Management</h4>
-                    </div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="glass-panel px-4 py-2 rounded-lg text-[10px] font-orbitron text-cyber-cyan">AutoCAD 3D</span>
+                    <span class="glass-panel px-4 py-2 rounded-lg text-[10px] font-orbitron text-cyber-purple">ETABS</span>
+                    <span class="glass-panel px-4 py-2 rounded-lg text-[10px] font-orbitron text-cyber-cyan">GIS MAPPING</span>
+                    <span class="glass-panel px-4 py-2 rounded-lg text-[10px] font-orbitron text-cyber-purple">PYTHON</span>
+                </div>
+            </div>
+
+            <div class="glass-panel p-8 rounded-[2rem] border-l-4 border-cyber-cyan" data-aos="fade-left">
+                <h3 class="font-orbitron text-sm mb-6 text-white tracking-widest">PERSONAL DATA</h3>
+                <div class="space-y-6 text-sm">
+                    <div class="flex items-center gap-4 text-slate-400"><i class="fas fa-map-marker-alt text-cyber-cyan w-5"></i> Suddhodhan-06, Rupandehi</div>
+                    <div class="flex items-center gap-4 text-slate-400"><i class="fas fa-phone text-cyber-cyan w-5"></i> +977 9860369578</div>
+                    <div class="flex items-center gap-4 text-slate-400"><i class="fas fa-envelope text-cyber-cyan w-5"></i> sanjaylodh7@gmail.com</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-black/30">
+    <section class="py-24 px-6 bg-slate-900/20">
         <div class="max-w-4xl mx-auto">
-            <h2 class="font-orbitron text-3xl text-center mb-16 tracking-widest">ACADEMIC <span class="text-cyber-cyan">TIMELINE</span></h2>
-            
-            <div class="relative timeline-line space-y-12">
-                <div class="relative md:flex items-center justify-between group" data-aos="fade-up">
-                    <div class="hidden md:block w-5/12 text-right pr-8">
-                        <h3 class="font-orbitron text-xl text-white">Bachelor in Civil Engineering</h3>
-                        <p class="text-cyber-purple text-sm">Pulchowk Campus, Lalitpur</p>
-                    </div>
-                    <div class="absolute left-[11px] md:left-1/2 -translate-x-1/2 w-4 h-4 bg-black border-2 border-cyber-cyan rounded-full z-10 group-hover:bg-cyber-cyan group-hover:shadow-[0_0_15px_#00f2ff] transition-all"></div>
-                    <div class="ml-10 md:ml-0 md:w-5/12 pl-0 md:pl-8">
-                        <div class="glass-card p-6 rounded-xl md:hidden">
-                            <h3 class="font-orbitron text-lg text-white">Bachelor in Civil Engineering</h3>
-                            <p class="text-cyber-purple text-xs mt-1">Pulchowk Campus, Lalitpur</p>
+            <h2 class="font-orbitron text-3xl text-center mb-20 tracking-widest">ACADEMIC <span class="text-cyber-cyan">LOGS</span></h2>
+            <div class="relative space-y-12">
+                <div class="timeline-trace"></div>
+                
+                <div class="relative pl-12 md:pl-0 md:flex md:justify-between items-center group" data-aos="fade-up">
+                    <div class="hidden md:block w-5/12 text-right pr-10 font-orbitron text-cyber-cyan text-xs">PULCHOWK CAMPUS</div>
+                    <div class="absolute left-[-1px] md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-cyber-cyan rounded-full z-10 shadow-[0_0_15px_#00f2ff]"></div>
+                    <div class="md:w-5/12 md:pl-10">
+                        <div class="glass-panel p-6 rounded-2xl group-hover:border-cyber-cyan transition">
+                            <h4 class="font-bold text-white font-orbitron text-sm">Bachelor in Civil Engineering</h4>
+                            <p class="text-xs text-slate-500 mt-2">Lalitpur, Nepal</p>
                         </div>
-                        <p class="hidden md:block text-slate-500 text-sm">Specialized in Structural Engineering and GIS Systems.</p>
                     </div>
                 </div>
 
-                <div class="relative md:flex items-center justify-between group flex-row-reverse" data-aos="fade-up">
-                    <div class="hidden md:block w-5/12 text-left pl-8">
-                        <h3 class="font-orbitron text-xl text-white">10+2 Science</h3>
-                        <p class="text-cyber-purple text-sm">Trinity Int'l College, Kathmandu</p>
-                    </div>
-                    <div class="absolute left-[11px] md:left-1/2 -translate-x-1/2 w-4 h-4 bg-black border-2 border-white rounded-full z-10 group-hover:border-cyber-purple transition-all"></div>
-                    <div class="ml-10 md:ml-0 md:w-5/12 pr-0 md:pr-8 md:text-right">
-                        <div class="glass-card p-6 rounded-xl md:hidden">
-                            <h3 class="font-orbitron text-lg text-white">10+2 Science</h3>
-                            <p class="text-cyber-purple text-xs mt-1">Trinity Int'l College, Kathmandu</p>
+                <div class="relative pl-12 md:pl-0 md:flex md:justify-between items-center group" data-aos="fade-up">
+                    <div class="hidden md:block w-5/12 text-right pr-10 font-orbitron text-cyber-cyan text-xs">TRINITY INTERNATIONAL</div>
+                    <div class="absolute left-[-1px] md:left-1/2 md:-translate-x-1/2 w-3 h-3 bg-white rounded-full z-10 opacity-50"></div>
+                    <div class="md:w-5/12 md:pl-10">
+                        <div class="glass-panel p-6 rounded-2xl group-hover:border-cyber-cyan transition">
+                            <h4 class="font-bold text-white font-orbitron text-sm">10+2 Science</h4>
+                            <p class="text-xs text-slate-500 mt-2">Dillibazar, Kathmandu</p>
                         </div>
-                        <p class="hidden md:block text-slate-500 text-sm">Major in Physics and Mathematics.</p>
-                    </div>
-                </div>
-
-                <div class="relative md:flex items-center justify-between group" data-aos="fade-up">
-                    <div class="hidden md:block w-5/12 text-right pr-8">
-                        <h3 class="font-orbitron text-xl text-white">SLC</h3>
-                        <p class="text-cyber-purple text-sm">Gurauliya Secondary School</p>
-                    </div>
-                    <div class="absolute left-[11px] md:left-1/2 -translate-x-1/2 w-4 h-4 bg-black border-2 border-white rounded-full z-10 group-hover:border-cyber-cyan transition-all"></div>
-                    <div class="ml-10 md:ml-0 md:w-5/12 pl-0 md:pl-8">
-                        <div class="glass-card p-6 rounded-xl md:hidden">
-                            <h3 class="font-orbitron text-lg text-white">SLC</h3>
-                            <p class="text-cyber-purple text-xs mt-1">Gurauliya Secondary School, Suddhodhan-06</p>
-                        </div>
-                        <p class="hidden md:block text-slate-500 text-sm">School Leaving Certificate with Distinction.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="py-24 px-6">
+    <section id="career" class="py-32 px-6 max-w-6xl mx-auto">
+        <h2 class="font-orbitron text-3xl mb-16"><i class="fas fa-briefcase text-cyber-purple mr-4"></i>CAREER <span class="text-cyber-purple">SYSTEM</span></h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="glass-panel p-8 rounded-[2rem] relative overflow-hidden group" data-aos="flip-up">
+                <div class="absolute top-0 right-0 p-4 font-orbitron text-[10px] text-cyber-cyan">2024 - PRESENT</div>
+                <h4 class="font-orbitron text-cyber-cyan mb-2">Civil Engineer (G-III)</h4>
+                <p class="text-white font-bold mb-4">DCC Office, Dadeldhura</p>
+                <p class="text-slate-500 text-sm leading-relaxed">District-level project monitoring and technical supervision of infrastructure works.</p>
+            </div>
+
+            <div class="glass-panel p-8 rounded-[2rem] group" data-aos="flip-up" data-aos-delay="100">
+                <div class="absolute top-0 right-0 p-4 font-orbitron text-[10px] text-slate-500">2023 - 2024</div>
+                <h4 class="font-orbitron text-cyber-purple mb-2">Civil Engineer (7th)</h4>
+                <p class="text-white font-bold mb-4">Pokhara Metropolitan City</p>
+                <p class="text-slate-500 text-sm leading-relaxed">Infrastructure planning and metropolitan urban development compliance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="lab" class="py-32 px-6 bg-black/40">
         <div class="max-w-6xl mx-auto">
-            <h2 class="font-orbitron text-3xl mb-12 flex items-center gap-4">
-                <i class="fas fa-briefcase text-cyber-purple"></i> WORK LOGS
-            </h2>
-            
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="glass-card p-8 rounded-2xl border-cyber-cyan relative overflow-hidden" data-aos="flip-up">
-                    <div class="absolute top-0 right-0 bg-cyber-cyan text-black font-bold text-[10px] px-3 py-1 font-orbitron">CURRENT</div>
-                    <div class="flex items-start gap-4">
-                        <div class="bg-cyber-cyan/20 p-3 rounded-lg text-cyber-cyan"><i class="fas fa-building"></i></div>
-                        <div>
-                            <h3 class="font-orbitron text-lg text-white">Civil Engineer (Gazetted 3rd)</h3>
-                            <p class="text-slate-400 text-xs mb-2">District Coordination Committee, Dadeldhura</p>
-                            <p class="text-slate-500 text-sm">Leading district-level infrastructure monitoring, planning, and technical supervision.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl" data-aos="flip-up" data-aos-delay="100">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-white/10 p-3 rounded-lg text-white"><i class="fas fa-city"></i></div>
-                        <div>
-                            <h3 class="font-orbitron text-lg text-white">Civil Engineer (7th Level)</h3>
-                            <p class="text-slate-400 text-xs mb-2">Pokhara Metropolitan City Office | 2024–2025</p>
-                            <p class="text-slate-500 text-sm">Managed metropolitan building permits and urban infrastructure compliance.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl" data-aos="flip-up" data-aos-delay="200">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-white/10 p-3 rounded-lg text-white"><i class="fas fa-chalkboard-teacher"></i></div>
-                        <div>
-                            <h3 class="font-orbitron text-lg text-white">Secondary Level Teacher</h3>
-                            <p class="text-slate-400 text-xs mb-2">Pharsatikar Secondary School | 2023–2024</p>
-                            <p class="text-slate-500 text-sm">Instructed engineering mathematics and science curricula.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl" data-aos="flip-up" data-aos-delay="300">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-white/10 p-3 rounded-lg text-white"><i class="fas fa-water"></i></div>
-                        <div>
-                            <h3 class="font-orbitron text-lg text-white">Sub Engineer</h3>
-                            <p class="text-slate-400 text-xs mb-2">Fed. Water Supply & Sanitation, Birgunj | 2022–2023</p>
-                            <p class="text-slate-500 text-sm">Oversaw water supply grid expansion and sanitation projects.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="py-24 px-6 bg-cyber-dark/50">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="font-orbitron text-3xl mb-12 text-center">TECHNICAL <span class="text-cyber-purple">ARSENAL</span></h2>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="glass-card p-8 rounded-2xl" data-aos="fade-right">
-                    <h3 class="font-orbitron text-xl mb-6 text-cyber-cyan"><i class="fas fa-drafting-compass mr-2"></i> Engineering Software</h3>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between text-xs font-orbitron mb-1"><span>AutoCAD</span><span>95%</span></div>
-                            <div class="h-2 bg-slate-700 rounded-full overflow-hidden"><div class="h-full bg-cyber-cyan w-[95%] shadow-[0_0_10px_#00f2ff]"></div></div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs font-orbitron mb-1"><span>Civil 3D</span><span>85%</span></div>
-                            <div class="h-2 bg-slate-700 rounded-full overflow-hidden"><div class="h-full bg-cyber-cyan w-[85%]"></div></div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs font-orbitron mb-1"><span>ETABS / SAP2000</span><span>80%</span></div>
-                            <div class="h-2 bg-slate-700 rounded-full overflow-hidden"><div class="h-full bg-cyber-cyan w-[80%]"></div></div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs font-orbitron mb-1"><span>GIS Mapping</span><span>90%</span></div>
-                            <div class="h-2 bg-slate-700 rounded-full overflow-hidden"><div class="h-full bg-cyber-cyan w-[90%]"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl" data-aos="fade-left">
-                    <h3 class="font-orbitron text-xl mb-6 text-cyber-purple"><i class="fas fa-code mr-2"></i> Computational</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-black/40 p-4 rounded-xl text-center border border-white/5 hover:border-cyber-purple transition">
-                            <i class="fab fa-python text-3xl text-yellow-400 mb-2"></i>
-                            <h4 class="font-orbitron text-sm">Python</h4>
-                            <p class="text-xs text-slate-500">Data Analysis & Automation</p>
-                        </div>
-                        <div class="bg-black/40 p-4 rounded-xl text-center border border-white/5 hover:border-cyber-purple transition">
-                            <i class="fas fa-terminal text-3xl text-blue-400 mb-2"></i>
-                            <h4 class="font-orbitron text-sm">C Program</h4>
-                            <p class="text-xs text-slate-500">Algorithm Logic</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto">
             <div class="flex justify-between items-end mb-12">
-                <div>
-                    <h2 class="font-orbitron text-3xl">DAILY <span class="text-cyber-cyan">LOGS</span></h2>
-                    <p class="text-slate-500 text-sm mt-2">Insights from the field and desk.</p>
-                </div>
-                <a href="#" class="text-xs font-orbitron text-cyber-purple hover:text-white transition">VIEW ARCHIVE <i class="fas fa-arrow-right ml-1"></i></a>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <article class="glass-card rounded-2xl overflow-hidden group cursor-pointer" data-aos="fade-up">
-                    <div class="h-48 bg-slate-800 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80" alt="Construction Site" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex gap-2 mb-3">
-                            <span class="text-[10px] bg-cyber-cyan/10 text-cyber-cyan px-2 py-1 rounded border border-cyber-cyan/20">SITE VISIT</span>
-                            <span class="text-[10px] text-slate-500 py-1">Dec 22, 2025</span>
-                        </div>
-                        <h3 class="font-orbitron text-lg mb-2 group-hover:text-cyber-cyan transition">Sustainable Concrete Mixes</h3>
-                        <p class="text-sm text-slate-400 line-clamp-2">Exploring new additives to reduce carbon footprint in municipal construction projects...</p>
-                        <a href="#" class="inline-block mt-4 text-xs font-bold text-white hover:text-cyber-cyan transition">READ ENTRY</a>
-                    </div>
-                </article>
-
-                <article class="glass-card rounded-2xl overflow-hidden group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-48 bg-slate-800 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80" alt="Laptop Code" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex gap-2 mb-3">
-                            <span class="text-[10px] bg-cyber-purple/10 text-cyber-purple px-2 py-1 rounded border border-cyber-purple/20">PYTHON</span>
-                            <span class="text-[10px] text-slate-500 py-1">Dec 20, 2025</span>
-                        </div>
-                        <h3 class="font-orbitron text-lg mb-2 group-hover:text-cyber-purple transition">Automating Beam Calculations</h3>
-                        <p class="text-sm text-slate-400 line-clamp-2">I wrote a simple Python script to verify ETABS output for simple support beams...</p>
-                        <a href="#" class="inline-block mt-4 text-xs font-bold text-white hover:text-cyber-purple transition">READ ENTRY</a>
-                    </div>
-                </article>
-
-                <article class="glass-card rounded-2xl overflow-hidden group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-48 bg-slate-800 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&q=80" alt="Urban City" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex gap-2 mb-3">
-                            <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20">URBAN</span>
-                            <span class="text-[10px] text-slate-500 py-1">Dec 18, 2025</span>
-                        </div>
-                        <h3 class="font-orbitron text-lg mb-2 group-hover:text-blue-400 transition">Smart City Infrastructure</h3>
-                        <p class="text-sm text-slate-400 line-clamp-2">Integrating IoT sensors into bridge maintenance schedules for real-time health monitoring...</p>
-                        <a href="#" class="inline-block mt-4 text-xs font-bold text-white hover:text-blue-400 transition">READ ENTRY</a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="videos" class="py-24 px-6 bg-black/40">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-10">
-                <div>
-                    <h2 class="font-orbitron text-4xl mb-2 text-white">THE <span class="text-red-500 italic">LAB</span></h2>
-                    <p class="text-slate-500">Visual archives from the Civil Universe.</p>
-                </div>
-                <a href="https://www.youtube.com/@sanjayciviluniverse" target="_blank" class="mt-6 md:mt-0 glass-card px-6 py-3 rounded-full hover:bg-red-600 hover:border-red-600 transition group">
-                    <i class="fab fa-youtube text-red-500 group-hover:text-white mr-2"></i>
-                    <span class="font-orbitron text-xs font-bold tracking-widest group-hover:text-white">SUBSCRIBE CHANNEL</span>
-                </a>
+                <h2 class="font-orbitron text-4xl">THE <span class="text-red-500 italic">LAB</span></h2>
+                <a href="https://www.youtube.com/@sanjayciviluniverse" target="_blank" class="text-xs font-orbitron text-red-500 hover:tracking-widest transition-all"><i class="fab fa-youtube mr-2"></i>SUBSCRIBE</a>
             </div>
 
             <div class="grid lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-2 glass-card p-2 rounded-2xl" data-aos="fade-right">
-                    <div class="aspect-video w-full rounded-xl overflow-hidden bg-black relative group">
-                        <iframe id="main-player" class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="lg:col-span-2 glass-panel p-2 rounded-3xl overflow-hidden" data-aos="fade-right">
+                    <div class="aspect-video w-full">
+                        <iframe id="main-video" class="w-full h-full rounded-2xl" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
-
-                <div class="glass-card p-6 rounded-2xl h-full flex flex-col" data-aos="fade-left">
-                    <h3 class="font-orbitron text-sm text-slate-400 mb-4 tracking-widest">RECENT UPLOADS</h3>
-                    <div class="space-y-4 overflow-y-auto max-h-[400px] pr-2 custom-scroll" id="playlist-container">
-                        </div>
-                </div>
+                <div class="glass-panel p-6 rounded-3xl flex flex-col gap-4 max-h-[450px] overflow-y-auto" id="video-list">
+                    </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 px-6 border-y border-white/5">
-        <div class="max-w-4xl mx-auto flex justify-center gap-12 sm:gap-24">
-            <div class="text-center group cursor-default" data-aos="zoom-in">
-                <div class="w-16 h-16 rounded-full glass-card flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_#00f2ff] transition">
-                    <i class="fas fa-headphones-alt text-2xl text-cyber-cyan"></i>
-                </div>
-                <p class="font-orbitron text-xs tracking-widest">MUSIC</p>
-            </div>
-            <div class="text-center group cursor-default" data-aos="zoom-in" data-aos-delay="100">
-                <div class="w-16 h-16 rounded-full glass-card flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_#bc13fe] transition">
-                    <i class="fas fa-film text-2xl text-cyber-purple"></i>
-                </div>
-                <p class="font-orbitron text-xs tracking-widest">MOVIES</p>
-            </div>
-            <div class="text-center group cursor-default" data-aos="zoom-in" data-aos-delay="200">
-                <div class="w-16 h-16 rounded-full glass-card flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-[0_0_20px_white] transition">
-                    <i class="fas fa-plane-departure text-2xl text-white"></i>
-                </div>
-                <p class="font-orbitron text-xs tracking-widest">TRAVEL</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 px-6 relative overflow-hidden">
-        <div class="absolute -right-20 bottom-0 w-96 h-96 bg-cyber-purple/10 blur-[100px] rounded-full"></div>
-
-        <div class="max-w-4xl mx-auto relative z-10">
-            <h2 class="font-orbitron text-4xl text-center mb-4">INITIATE <span class="text-cyber-cyan">CONNECTION</span></h2>
-            <p class="text-center text-slate-400 mb-12">Have a project or inquiry? Transmit a message.</p>
-
-            <div class="glass-card p-8 md:p-12 rounded-[2rem]">
-                <form onsubmit="event.preventDefault(); alert('Message simulation sent!');" class="space-y-6">
+    <section id="contact" class="py-32 px-6">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="font-orbitron text-center text-2xl mb-12 tracking-[0.5em] text-slate-500 uppercase">Initiate Connection</h2>
+            
+            <div class="glass-panel p-8 md:p-12 rounded-[3rem]">
+                <form id="contact-form" class="space-y-6">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    
                     <div class="grid md:grid-cols-2 gap-6">
-                        <div class="group">
-                            <label class="block font-orbitron text-xs text-cyber-cyan mb-2 ml-1">CODENAME</label>
-                            <input type="text" class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyber-cyan focus:shadow-[0_0_15px_rgba(0,242,255,0.2)] transition" placeholder="Your Name">
-                        </div>
-                        <div class="group">
-                            <label class="block font-orbitron text-xs text-cyber-cyan mb-2 ml-1">FREQUENCY (EMAIL)</label>
-                            <input type="email" class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyber-cyan focus:shadow-[0_0_15px_rgba(0,242,255,0.2)] transition" placeholder="email@address.com">
-                        </div>
+                        <input type="text" name="name" placeholder="IDENTIFIER (NAME)" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 font-orbitron text-[10px] focus:border-cyber-cyan outline-none transition">
+                        <input type="email" name="email" placeholder="FREQUENCY (EMAIL)" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 font-orbitron text-[10px] focus:border-cyber-cyan outline-none transition">
                     </div>
-                    <div>
-                        <label class="block font-orbitron text-xs text-cyber-cyan mb-2 ml-1">DATA PACKET (MESSAGE)</label>
-                        <textarea rows="4" class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyber-cyan focus:shadow-[0_0_15px_rgba(0,242,255,0.2)] transition" placeholder="Describe your inquiry..."></textarea>
-                    </div>
-                    <button class="w-full bg-gradient-to-r from-cyber-cyan to-blue-500 text-black font-orbitron font-bold py-4 rounded-lg hover:shadow-[0_0_30px_rgba(0,242,255,0.4)] hover:scale-[1.01] transition transform">
-                        TRANSMIT DATA
-                    </button>
+                    <textarea name="message" placeholder="DATA PACKET (MESSAGE)" rows="4" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 font-orbitron text-[10px] focus:border-cyber-cyan outline-none transition"></textarea>
+                    
+                    <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-cyber-cyan to-cyber-purple py-4 rounded-xl font-orbitron text-[10px] font-bold tracking-widest text-black hover:opacity-90 transition">TRANSMIT DATA</button>
+                    <p id="form-status" class="text-center font-orbitron text-[10px] mt-4 hidden"></p>
                 </form>
 
-                <div class="mt-12 pt-8 border-t border-white/10 flex flex-col items-center">
-                    <p class="font-orbitron text-sm text-slate-400 mb-6">DIRECT FEED</p>
-                    <div class="flex gap-8">
-                        <a href="https://www.facebook.com/itsmesanjaylodh/" target="_blank" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-blue-500 hover:shadow-[0_0_20px_#3b82f6] hover:-translate-y-2 transition duration-300">
-                            <i class="fab fa-facebook-f text-xl"></i>
-                        </a>
-                        <a href="https://www.youtube.com/@sanjayciviluniverse" target="_blank" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-red-500 hover:shadow-[0_0_20px_#ef4444] hover:-translate-y-2 transition duration-300">
-                            <i class="fab fa-youtube text-xl"></i>
-                        </a>
-                        <a href="mailto:sanjaylodh7@gmail.com" class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-green-400 hover:shadow-[0_0_20px_#4ade80] hover:-translate-y-2 transition duration-300">
-                            <i class="fas fa-envelope text-xl"></i>
-                        </a>
-                    </div>
+                <div class="mt-12 pt-8 border-t border-white/5 flex justify-center gap-10">
+                    <a href="https://www.facebook.com/itsmesanjaylodh/" target="_blank" class="text-2xl text-slate-400 hover:text-cyber-cyan transition"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/@sanjayciviluniverse" target="_blank" class="text-2xl text-slate-400 hover:text-red-500 transition"><i class="fab fa-youtube"></i></a>
+                    <a href="mailto:sanjaylodh7@gmail.com" class="text-2xl text-slate-400 hover:text-cyber-purple transition"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
+            
+            <p class="text-center mt-20 font-orbitron text-[8px] tracking-[1em] text-slate-700">© 2025 SANJAY KUMAR LODH | ALL SYSTEMS OPERATIONAL</p>
         </div>
     </section>
-
-    <footer class="py-8 text-center border-t border-white/5 bg-black">
-        <p class="font-orbitron text-[10px] text-slate-600 tracking-[0.5em]">
-            &copy; 2025 SANJAY KUMAR LODH | SYSTEM ONLINE
-        </p>
-    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+        // [INITIALIZE ANIMATIONS]
+        AOS.init({ duration: 1000, once: true });
 
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Video Player Logic
+        // [CUSTOMIZE]: Add your YouTube Video IDs and Titles here
         const videos = [
-            { id: 'QXJo5JkcAIw' },
-            { id: 'HhV7K2XMwN0' },
-            { id: '4FmkWngVZls'},
-            { id: 'NsZhyj0msoI'}
+            { id: 'NsZhyj0msoI', title: 'Project1: Meal Record System' },
+            { id: 'QXJo5JkcAIw', title: 'Login System in Excel using VBA CODE' },
+            { id: 'HhV7K2XMwN0', title: 'E1:Excel Tutorial | Count | CountA | CountIF| CountIFS' },
+            { id: '4FmkWngVZls', title: 'Inserting Page Number and Making Table of Content in MS word.' }
         ];
 
-        const playlistContainer = document.getElementById('playlist-container');
-        const mainPlayer = document.getElementById('main-player');
+        // [LOAD VIDEOS TO SIDEBAR]
+        const videoList = document.getElementById('video-list');
+        const mainVideo = document.getElementById('main-video');
 
-        // Render Playlist
-        videos.forEach((video, index) => {
-            const div = document.createElement('div');
-            div.className = `flex gap-4 p-3 rounded-xl hover:bg-white/5 cursor-pointer transition border border-transparent hover:border-cyber-cyan/30 ${index === 0 ? 'bg-white/5' : ''}`;
-            div.onclick = () => playVideo(video.id, div);
-            
-            div.innerHTML = `
-                <div class="w-24 h-16 bg-black rounded-lg overflow-hidden flex-shrink-0 relative">
-                    <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <i class="fas fa-play text-white text-xs opacity-80"></i>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-orbitron text-xs text-white line-clamp-2 leading-relaxed">${video.title}</h4>
-                    <p class="text-[10px] text-slate-500 mt-1">Watch Now</p>
+        videos.forEach(vid => {
+            const item = document.createElement('div');
+            item.className = "flex gap-4 cursor-pointer p-2 rounded-xl hover:bg-white/5 transition border border-transparent hover:border-cyber-cyan/30";
+            item.innerHTML = `
+                <img src="https://img.youtube.com/vi/${vid.id}/mqdefault.jpg" class="w-20 rounded-lg">
+                <div class="flex flex-col justify-center">
+                    <h5 class="font-orbitron text-[8px] text-white">${vid.title}</h5>
+                    <span class="text-[6px] text-cyber-cyan mt-1">PLAY ARCHIVE</span>
                 </div>
             `;
-            playlistContainer.appendChild(div);
+            item.onclick = () => {
+                mainVideo.src = `https://www.youtube.com/embed/${vid.id}?autoplay=1`;
+            };
+            videoList.appendChild(item);
         });
 
-        function playVideo(id, element) {
-            mainPlayer.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-            
-            // Highlight active video
-            const allItems = playlistContainer.children;
-            for(let item of allItems) {
-                item.classList.remove('bg-white/5', 'border-cyber-cyan/30');
-            }
-            element.classList.add('bg-white/5', 'border-cyber-cyan/30');
-        }
+        // [CONTACT FORM LOGIC]
+        const form = document.getElementById('contact-form');
+        const status = document.getElementById('form-status');
+        const btn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            btn.innerHTML = "TRANSMITTING...";
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: json
+            })
+            .then(async (response) => {
+                if (response.status == 200) {
+                    status.innerHTML = "SUCCESS: DATA PACKET RECEIVED.";
+                    status.className = "text-center font-orbitron text-[10px] mt-4 text-cyber-cyan";
+                    form.reset();
+                } else {
+                    status.innerHTML = "ERROR: TRANSMISSION FAILED.";
+                    status.className = "text-center font-orbitron text-[10px] mt-4 text-red-500";
+                }
+            })
+            .catch(error => {
+                status.innerHTML = "SYSTEM ERROR. CHECK FREQUENCY.";
+            })
+            .finally(() => {
+                status.classList.remove('hidden');
+                btn.innerHTML = "TRANSMIT DATA";
+                btn.disabled = false;
+            });
+        });
     </script>
 </body>
 </html>
-
