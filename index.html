@@ -1,122 +1,366 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sanjay Kumar Lodh | Civil Engineer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjay Kumar Lodh | Civil Engineer Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-cyan: #00f2ff;
+            --neon-purple: #bc13fe;
+            --glass-bg: rgba(15, 23, 42, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .orbitron { font-family: 'Orbitron', sans-serif; }
+
+        /* Animated Mesh Gradient Background */
+        .bg-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(0, 242, 255, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(188, 19, 254, 0.08), transparent 25%);
+            background-color: #020617;
+        }
+
+        /* Glassmorphism Class */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* Hover Effects */
+        .glass-hover:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .neon-text-cyan { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 242, 255, 0.6); }
+        .neon-text-purple { color: var(--neon-purple); text-shadow: 0 0 10px rgba(188, 19, 254, 0.6); }
+
+        /* Buttons */
+        .btn-neon {
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            transition: 0.3s;
+        }
+        .btn-neon:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        /* Timeline vertical line */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--neon-cyan), var(--neon-purple));
+            transform: translateX(-50%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-cyan); }
+    </style>
 </head>
 <body>
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="glass hero-card">
-    <img src="profile.jpg" alt="Profile Photo" class="profile">
-    <h1>Sanjay Kumar Lodh</h1>
-    <h2>Civil Engineer</h2>
-    <p>Engineering • Technology • Creativity</p>
-    <div class="hero-btns">
-      <a href="#about">Explore</a>
-      <a href="#youtube">Watch Videos</a>
-    </div>
-  </div>
-</section>
+    <div class="bg-mesh"></div>
 
-<!-- ================= ABOUT ================= -->
-<section id="about" class="section glass">
-  <h2>About Me</h2>
-  <p>
-    Address: Suddhodhan-06, Rupandehi<br>
-    Phone: 9860369578<br>
-    Email: sanjaylodh7@gmail.com
-  </p>
-</section>
+    <nav class="fixed w-full z-50 p-4">
+        <div class="glass max-w-7xl mx-auto rounded-xl px-6 py-3 flex justify-between items-center">
+            <div class="orbitron font-bold text-xl tracking-tighter">
+                <span class="neon-text-cyan">S</span>KL
+            </div>
+            <div class="hidden md:flex space-x-8 text-xs font-semibold tracking-widest uppercase orbitron">
+                <a href="#about" class="hover:text-cyan-400 transition">About</a>
+                <a href="#education" class="hover:text-cyan-400 transition">History</a>
+                <a href="#experience" class="hover:text-cyan-400 transition">Work</a>
+                <a href="#blog" class="hover:text-cyan-400 transition">Blog</a>
+            </div>
+            <a href="#contact" class="btn-neon px-5 py-2 rounded-lg text-xs font-bold orbitron uppercase tracking-widest">
+                Contact
+            </a>
+        </div>
+    </nav>
 
-<!-- ================= EDUCATION ================= -->
-<section class="section">
-  <h2>Education</h2>
-  <div class="cards">
-    <div class="glass card">SLC – Gurauliya Secondary School</div>
-    <div class="glass card">+2 – Trinity International HSS, Kathmandu</div>
-    <div class="glass card">Bachelor – Pulchowk Campus, Lalitpur</div>
-  </div>
-</section>
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+        <div data-aos="zoom-in" class="relative mb-8 group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000"></div>
+            <div class="relative w-48 h-48 rounded-full overflow-hidden border-2 border-slate-700 bg-slate-900">
+                <img src="https://via.placeholder.com/200" alt="Sanjay Kumar Lodh" class="w-full h-full object-cover">
+            </div>
+        </div>
 
-<!-- ================= EXPERIENCE ================= -->
-<section class="section">
-  <h2>Work Experience</h2>
-  <div class="cards">
-    <div class="glass card">Sub Engineer – Federal Water Supply Project (2022–23)</div>
-    <div class="glass card">Teacher – Pharsatikar Secondary School (2023–24)</div>
-    <div class="glass card">Civil Engineer – Pokhara Metro (2024–25)</div>
-    <div class="glass card">Civil Engineer (Gazetted) – DCC Dadeldhura</div>
-  </div>
-</section>
+        <h1 data-aos="fade-up" class="orbitron text-4xl md:text-6xl font-bold mb-4">
+            SANJAY KUMAR <span class="neon-text-cyan">LODH</span>
+        </h1>
+        <div data-aos="fade-up" data-aos-delay="100" class="flex flex-wrap justify-center gap-3 text-sm md:text-lg text-slate-400 orbitron tracking-widest uppercase mb-8">
+            <span>Engineering</span> <span class="text-cyan-500">•</span> 
+            <span>Creativity</span> <span class="text-purple-500">•</span> 
+            <span>Technology</span>
+        </div>
+        
+        <div data-aos="fade-up" data-aos-delay="200" class="flex gap-4">
+            <a href="#experience" class="glass px-8 py-3 rounded-lg hover:bg-slate-800 transition">Portfolio</a>
+            <a href="#youtube" class="btn-neon px-8 py-3 rounded-lg font-bold">Watch Videos</a>
+        </div>
+    </section>
 
-<!-- ================= SKILLS ================= -->
-<section class="section">
-  <h2>Skills</h2>
-  <div class="cards">
-    <div class="glass card">AutoCAD • Civil 3D • ETABS • GIS</div>
-    <div class="glass card">Python • C Programming</div>
-  </div>
-</section>
+    <section id="about" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-10">
+            <div data-aos="fade-right" class="glass p-8 rounded-2xl">
+                <h2 class="orbitron text-2xl mb-6 neon-text-purple">Digital ID</h2>
+                <ul class="space-y-4 text-slate-300">
+                    <li class="flex items-center"><i class="fas fa-map-marker-alt w-8 text-cyan-400"></i> Suddhodhan-06, Rupandehi</li>
+                    <li class="flex items-center"><i class="fas fa-phone w-8 text-cyan-400"></i> 9860369578</li>
+                    <li class="flex items-center"><i class="fas fa-envelope w-8 text-cyan-400"></i> sanjaylodh7@gmail.com</li>
+                </ul>
+            </div>
+            <div data-aos="fade-left">
+                <h2 class="orbitron text-3xl font-bold mb-4">Engineering the <span class="neon-text-cyan">Future</span></h2>
+                <p class="text-slate-400 leading-relaxed">
+                    Civil Engineer specialized in municipal planning and infrastructure development. Currently serving as a Gazetted Third Class officer at DCC Dadeldhura. I combine technical expertise in AutoCAD, ETABS, and GIS with modern programming (Python/C) to solve complex structural challenges.
+                </p>
+            </div>
+        </div>
+    </section>
 
-<!-- ================= BLOG ================= -->
-<section class="section">
-  <h2>Daily Blogs</h2>
-  <div class="cards">
-    <div class="glass card">Coming Soon: Engineering Insights 🚧</div>
-    <div class="glass card">Coming Soon: Civil Exam Prep 📘</div>
-  </div>
-</section>
+    <section id="education" class="py-20 bg-black/20">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="orbitron text-3xl text-center mb-16">Academic <span class="neon-text-cyan">Timeline</span></h2>
+            <div class="relative timeline-line">
+                <div class="mb-12 flex justify-between items-center w-full" data-aos="fade-up">
+                    <div class="hidden md:block w-5/12 text-right pr-8"><span class="orbitron text-xs text-slate-500">School Level</span></div>
+                    <div class="z-20 glass w-10 h-10 rounded-full flex items-center justify-center border border-cyan-500 bg-slate-900"><i class="fas fa-school text-cyan-400 text-xs"></i></div>
+                    <div class="w-full md:w-5/12 glass p-6 rounded-xl glass-hover ml-6 md:ml-0">
+                        <h3 class="font-bold text-lg">SLC</h3>
+                        <p class="text-sm text-slate-400">Gurauliya Secondary School</p>
+                    </div>
+                </div>
+                <div class="mb-12 flex justify-between items-center w-full flex-row-reverse" data-aos="fade-up">
+                    <div class="hidden md:block w-5/12 text-left pl-8"><span class="orbitron text-xs text-slate-500">High School</span></div>
+                    <div class="z-20 glass w-10 h-10 rounded-full flex items-center justify-center border border-purple-500 bg-slate-900"><i class="fas fa-atom text-purple-400 text-xs"></i></div>
+                    <div class="w-full md:w-5/12 glass p-6 rounded-xl glass-hover mr-6 md:mr-0">
+                        <h3 class="font-bold text-lg">10+2 Science</h3>
+                        <p class="text-sm text-slate-400">Trinity International College, Kathmandu</p>
+                    </div>
+                </div>
+                <div class="mb-12 flex justify-between items-center w-full" data-aos="fade-up">
+                    <div class="hidden md:block w-5/12 text-right pr-8"><span class="orbitron text-xs text-slate-500">Engineering</span></div>
+                    <div class="z-20 glass w-10 h-10 rounded-full flex items-center justify-center border border-cyan-500 bg-slate-900"><i class="fas fa-graduation-cap text-cyan-400 text-xs"></i></div>
+                    <div class="w-full md:w-5/12 glass p-6 rounded-xl glass-hover ml-6 md:ml-0">
+                        <h3 class="font-bold text-lg">Bachelor in Civil Engineering</h3>
+                        <p class="text-sm text-slate-400">Pulchowk Campus, Lalitpur</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- ================= YOUTUBE ================= -->
-<section id="youtube" class="section">
-  <h2>YouTube Channel</h2>
+    <section id="experience" class="py-20 px-6 max-w-7xl mx-auto">
+        <h2 class="orbitron text-3xl text-center mb-12">Professional <span class="neon-text-purple">Career</span></h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div data-aos="flip-up" class="glass p-6 rounded-xl glass-hover">
+                <span class="text-xs orbitron text-slate-500">2022 - 2023</span>
+                <h3 class="font-bold text-lg mt-2 text-cyan-400">Sub Engineer</h3>
+                <p class="text-sm text-slate-400 mt-1">Federal Water Supply & Sanitation, Birgunj</p>
+            </div>
+            <div data-aos="flip-up" data-aos-delay="100" class="glass p-6 rounded-xl glass-hover">
+                <span class="text-xs orbitron text-slate-500">2023 - 2024</span>
+                <h3 class="font-bold text-lg mt-2 text-purple-400">Secondary Teacher</h3>
+                <p class="text-sm text-slate-400 mt-1">Pharsatikar Secondary School</p>
+            </div>
+            <div data-aos="flip-up" data-aos-delay="200" class="glass p-6 rounded-xl glass-hover">
+                <span class="text-xs orbitron text-slate-500">2024 - 2025</span>
+                <h3 class="font-bold text-lg mt-2 text-cyan-400">Civil Engineer (7th)</h3>
+                <p class="text-sm text-slate-400 mt-1">Pokhara Metropolitan City</p>
+            </div>
+            <div data-aos="flip-up" data-aos-delay="300" class="glass p-6 rounded-xl border-cyan-500/40 glass-hover">
+                <span class="text-xs orbitron text-white bg-cyan-600 px-2 py-1 rounded">CURRENT</span>
+                <h3 class="font-bold text-lg mt-2 text-white">Civil Engineer (G-III)</h3>
+                <p class="text-sm text-slate-400 mt-1">DCC, Dadeldhura</p>
+            </div>
+        </div>
+    </section>
 
-  <div class="youtube-box glass">
-    <iframe 
-      src="https://www.youtube.com/embed?listType=user_uploads&list=sanjayciviluniverse"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
-  </div>
+    <section class="py-20 bg-slate-900/40">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="orbitron text-2xl mb-8">Technical <span class="neon-text-cyan">Stack</span></h2>
+                <div class="space-y-6">
+                    <div><div class="flex justify-between text-xs mb-1"><span>AUTOCAD / CIVIL 3D</span><span>95%</span></div><div class="h-2 bg-slate-800 rounded-full"><div class="h-full bg-cyan-500 w-[95%] shadow-[0_0_10px_#00f2ff]"></div></div></div>
+                    <div><div class="flex justify-between text-xs mb-1"><span>ETABS</span><span>90%</span></div><div class="h-2 bg-slate-800 rounded-full"><div class="h-full bg-purple-500 w-[90%] shadow-[0_0_10px_#bc13fe]"></div></div></div>
+                    <div><div class="flex justify-between text-xs mb-1"><span>GIS / MAPPING</span><span>85%</span></div><div class="h-2 bg-slate-800 rounded-full"><div class="h-full bg-cyan-500 w-[85%] shadow-[0_0_10px_#00f2ff]"></div></div></div>
+                </div>
+            </div>
+            <div>
+                <h2 class="orbitron text-2xl mb-8">Coding <span class="neon-text-purple">Logic</span></h2>
+                <div class="flex gap-4">
+                    <div class="glass p-4 rounded-xl flex-1 text-center glass-hover">
+                        <i class="fab fa-python text-4xl text-yellow-400 mb-2"></i>
+                        <h3 class="font-bold">Python</h3>
+                    </div>
+                    <div class="glass p-4 rounded-xl flex-1 text-center glass-hover">
+                        <i class="fas fa-code text-4xl text-blue-400 mb-2"></i>
+                        <h3 class="font-bold">C Prog</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <a class="yt-link" href="https://www.youtube.com/@sanjayciviluniverse" target="_blank">
-    Visit My YouTube Channel
-  </a>
-</section>
+    <section id="blog" class="py-20 px-6 max-w-7xl mx-auto">
+        <h2 class="orbitron text-3xl mb-10">Daily <span class="neon-text-cyan">Logs</span></h2>
+        <div id="blog-grid" class="grid md:grid-cols-3 gap-8"></div>
+    </section>
 
-<!-- ================= INTERESTS ================= -->
-<section class="section">
-  <h2>Interests</h2>
-  <div class="cards">
-    <div class="glass card">🎵 Music</div>
-    <div class="glass card">🎬 Movies</div>
-    <div class="glass card">✈️ Travelling</div>
-  </div>
-</section>
+    <section id="youtube" class="py-20 bg-black/30 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-10">
+                <h2 class="orbitron text-3xl">Civil <span class="neon-text-purple">Universe</span></h2>
+                <a href="https://www.youtube.com/@sanjayciviluniverse" target="_blank" class="text-red-500 hover:text-white transition"><i class="fab fa-youtube"></i> Visit Channel</a>
+            </div>
+            <div id="video-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
 
-<!-- ================= CONTACT ================= -->
-<section class="section glass">
-  <h2>Contact</h2>
-  <p>Email: sanjaylodh7@gmail.com</p>
+    <section class="py-20 text-center">
+        <h2 class="orbitron text-xl mb-10 tracking-[0.5em] text-slate-500">INTERESTS</h2>
+        <div class="flex justify-center gap-10">
+            <div class="text-cyan-400 text-3xl"><i class="fas fa-music"></i></div>
+            <div class="text-purple-400 text-3xl"><i class="fas fa-film"></i></div>
+            <div class="text-cyan-400 text-3xl"><i class="fas fa-plane"></i></div>
+        </div>
+    </section>
 
-  <div class="socials">
-    <a href="https://www.youtube.com/@sanjayciviluniverse" target="_blank">YouTube</a>
-    <a href="https://www.facebook.com/itsmesanjaylodh/" target="_blank">Facebook</a>
-  </div>
-</section>
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-3xl mx-auto glass p-10 rounded-2xl text-center">
+            <h2 class="orbitron text-3xl mb-8">Establish <span class="neon-text-cyan">Link</span></h2>
+            <form class="space-y-4 text-left">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <input type="text" placeholder="Name" class="w-full bg-slate-900/50 border border-slate-700 p-3 rounded-lg focus:border-cyan-400 focus:outline-none text-white">
+                    <input type="email" placeholder="Email" class="w-full bg-slate-900/50 border border-slate-700 p-3 rounded-lg focus:border-cyan-400 focus:outline-none text-white">
+                </div>
+                <textarea placeholder="Message" class="w-full bg-slate-900/50 border border-slate-700 p-3 rounded-lg h-32 focus:border-cyan-400 focus:outline-none text-white"></textarea>
+                <button class="w-full btn-neon py-3 rounded-lg font-bold orbitron uppercase">Transmit</button>
+            </form>
+            <div class="mt-8 flex justify-center gap-6 text-2xl text-slate-500">
+                <a href="https://www.facebook.com/itsmesanjaylodh/" class="hover:text-blue-500 transition"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@sanjayciviluniverse" class="hover:text-red-500 transition"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="hover:text-blue-400 transition"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </section>
 
-<footer>
-  © 2025 Sanjay Kumar Lodh
-</footer>
+    <footer class="py-6 text-center text-xs text-slate-600 orbitron">
+        &copy; 2025 Sanjay Kumar Lodh | Engineered for the Future
+    </footer>
 
-<script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // --- 1. CONFIG: ADD YOUR BLOGS HERE ---
+        const blogs = [
+            {
+                title: "Sustainable Urban Planning in Pokhara",
+                category: "Urban Planning",
+                date: "Jan 10, 2025",
+                // You can use any image URL here
+                image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=600&auto=format&fit=crop",
+                link: "#"
+            },
+            {
+                title: "Automation with Python in Civil Engineering",
+                category: "Tech",
+                date: "Dec 28, 2024",
+                image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=600&auto=format&fit=crop",
+                link: "#"
+            },
+            {
+                title: "Challenges in Rural Water Supply",
+                category: "Field Work",
+                date: "Dec 15, 2024",
+                image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?q=80&w=600&auto=format&fit=crop",
+                link: "#"
+            }
+        ];
+
+        // --- 2. CONFIG: ADD YOUR YOUTUBE VIDEOS HERE ---
+        const videos = [
+            {
+                title: "AutoCAD 3D Modeling Basics",
+                id: "dQw4w9WgXcQ" // Replace with actual YouTube Video ID (the part after v=)
+            },
+            {
+                title: "Site Visit: Dadeldhura Project",
+                id: "M7lc1UVf-VE" // Example ID
+            },
+             {
+                title: "Understanding Structural Loads",
+                id: "tgbNymZ7vqY" // Example ID
+            }
+        ];
+
+        // --- RENDER LOGIC (DO NOT TOUCH UNLESS YOU KNOW JS) ---
+        
+        // Render Blogs
+        const blogContainer = document.getElementById('blog-grid');
+        blogs.forEach((blog, index) => {
+            blogContainer.innerHTML += `
+                <article class="glass rounded-xl overflow-hidden glass-hover flex flex-col h-full" data-aos="fade-up" data-aos-delay="${index * 100}">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="${blog.image}" alt="${blog.title}" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <span class="absolute top-3 right-3 bg-black/60 backdrop-blur text-xs px-2 py-1 rounded text-cyan-400 orbitron border border-cyan-500/30">${blog.category}</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <span class="text-xs text-slate-500 mb-2">${blog.date}</span>
+                        <h3 class="font-bold text-lg mb-4 text-white flex-1">${blog.title}</h3>
+                        <a href="${blog.link}" class="inline-block text-xs font-bold uppercase tracking-widest text-purple-400 hover:text-purple-300">Read Entry &rarr;</a>
+                    </div>
+                </article>
+            `;
+        });
+
+        // Render Videos
+        const videoContainer = document.getElementById('video-grid');
+        videos.forEach((video, index) => {
+            videoContainer.innerHTML += `
+                <div class="glass p-3 rounded-xl" data-aos="fade-up" data-aos-delay="${index * 100}">
+                    <div class="aspect-video rounded-lg overflow-hidden bg-black">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/${video.id}" title="${video.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <h3 class="mt-3 text-sm font-bold text-slate-300 truncate">${video.title}</h3>
+                </div>
+            `;
+        });
+    </script>
 </body>
 </html>
